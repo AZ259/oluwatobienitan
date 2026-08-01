@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { getLatestPosts } from "@/data/blog";
+import LatestNews from "@/components/LatestNews";
 import services from "@/data/services";
 import { categories, works } from "@/data/work";
 import heroImage from "./hero_image.jpg";
 
 export default async function Home() {
-  const blogPosts = await getLatestPosts(3);
   const featuredWorks = works.filter((w) => w.featured);
 
   return (
@@ -62,28 +62,9 @@ export default async function Home() {
           </div>
 
           <div className="grid-3">
-            {blogPosts.map((post) => (
-              <div key={post.slug} className="card blog-card">
-                {post.featuredImage && (
-                  <Image
-                    src={post.featuredImage}
-                    alt={post.featuredImageAlt || post.title}
-                    width={post.featuredImageWidth || 800}
-                    height={post.featuredImageHeight || 450}
-                    className="blog-card-image"
-                  />
-                )}
-                <span className="badge blog-badge">{post.category}</span>
-                <h3 className="blog-title">
-                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                </h3>
-                <div className="blog-meta">
-                  <span>By {post.author}</span>
-                  <span>&bull;</span>
-                  <span>{post.date}</span>
-                </div>
-              </div>
-            ))}
+            <Suspense fallback={<div className="card blog-card skeleton-card">Loading latest news...</div>}>
+              <LatestNews />
+            </Suspense>
           </div>
         </div>
       </section>

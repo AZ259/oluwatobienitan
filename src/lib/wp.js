@@ -3,7 +3,7 @@ const API = "https://oluwatobienitan.com/wp-json/wp/v2";
 export async function fetchAPI(endpoint, params = {}) {
   const url = new URL(`${API}/${endpoint}`);
   url.search = new URLSearchParams({ _embed: "1", ...params }).toString();
-  const res = await fetch(url, { next: { revalidate: 60 } });
+  const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) {
     console.error(`WP API error: ${res.status} for ${url}`);
     return [];
