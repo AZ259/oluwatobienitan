@@ -8,6 +8,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "news.oluwatobienitan.com",
+      },
+      {
+        protocol: "https",
         hostname: "secure.gravatar.com",
       },
     ],

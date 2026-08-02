@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const HERO_IMAGE =
-  "https://oluwatobienitan.com/wp-content/uploads/2025/12/cropped-2-removebg-preview.png";
+  "https://news.oluwatobienitan.com/wp-content/uploads/2025/12/cropped-2-removebg-preview.png";
 
 export default function PageHeader({ badge, title, description, image, imageAlt, children }) {
   return (

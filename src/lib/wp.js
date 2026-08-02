@@ -1,4 +1,4 @@
-const API = "https://oluwatobienitan.com/wp-json/wp/v2";
+const API = "https://news.oluwatobienitan.com/wp-json/wp/v2";
 
 export async function fetchAPI(endpoint, params = {}) {
   const url = new URL(`${API}/${endpoint}`);
